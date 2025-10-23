@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Mini Portfolio</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+    color: #333;
+  }
+
+  nav {
+    background: linear-gradient(90deg, #007bff, #00bcd4);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  }
+
+  nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav a:hover, nav a.active {
+    color: #ffeb3b;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 40px;
+    color: #222;
+  }
+
+  p {
+    text-align: center;
+    font-size: 16px;
+    max-width: 600px;
+    margin: 15px auto;
+    line-height: 1.6;
+  }
+
+  .btn {
+    display: block;
+    margin: 15px auto;
+    background: linear-gradient(90deg, #007bff, #00bcd4);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: linear-gradient(90deg, #00bcd4, #007bff);
+    transform: scale(1.05);
+  }
+
+  .card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 25px auto;
+    max-width: 600px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    background: #f5f5f5;
+    color: #666;
+  }
+
+  #more {
+    display: none;
+  }
+
+  /* Fade-in animation */
+  .fade {
+    animation: fadeIn 0.6s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h1>👋 About Me</h1>
+
+<p>I’m a beginner web developer learning HTML, CSS, and JavaScript.</p>
+
+<button class="btn" onclick="toggleMore()">Read more</button>
+
+<div id="more" class="card fade">
+  <p>I enjoy making small projects to improve my coding skills and design sense.  
+  This mini-portfolio demonstrates the use of internal CSS, JavaScript, and responsive layouts — all in a clean, minimal style.</p>
+</div>
+
+<footer>© 2025 Mini Portfolio — Designed with ❤️</footer>
+
+<script>
+function toggleMore() {
+  const more = document.getElementById("more");
+  if (more.style.display === "none" || more.style.display === "") {
+    more.style.display = "block";
+    more.classList.add('fade');
+  } else {
+    more.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
