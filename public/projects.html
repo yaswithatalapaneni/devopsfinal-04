@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About - Mini Portfolio</title>
+<title>Projects - Mini Portfolio</title>
 <style>
   body {
     font-family: 'Poppins', sans-serif;
@@ -39,23 +39,19 @@
     color: #222;
   }
 
-  p {
+  .filter-buttons {
     text-align: center;
-    font-size: 16px;
-    max-width: 600px;
-    margin: 15px auto;
-    line-height: 1.6;
+    margin: 20px 0;
   }
 
   .btn {
-    display: block;
-    margin: 15px auto;
     background: linear-gradient(90deg, #007bff, #00bcd4);
     color: white;
     border: none;
     padding: 10px 16px;
     border-radius: 30px;
     cursor: pointer;
+    margin: 6px;
     font-size: 14px;
     transition: all 0.3s ease;
   }
@@ -65,20 +61,32 @@
     transform: scale(1.05);
   }
 
-  .card {
+  .btn.active {
+    background: #ff9800;
+  }
+
+  #list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .project {
     background: #fff;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin: 25px auto;
-    max-width: 600px;
-    text-align: center;
+    margin: 15px 0;
     transition: all 0.3s ease;
   }
 
-  .card:hover {
+  .project:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .project b {
+    color: #007bff;
   }
 
   footer {
@@ -89,13 +97,9 @@
     color: #666;
   }
 
-  #more {
-    display: none;
-  }
-
-  /* Fade-in animation */
+  /* Smooth fade animation */
   .fade {
-    animation: fadeIn 0.6s ease-in;
+    animation: fadeIn 0.5s ease-in;
   }
 
   @keyframes fadeIn {
@@ -108,31 +112,42 @@
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="about.html" class="active">About</a>
-  <a href="projects.html">Projects</a>
+  <a href="about.html">About</a>
+  <a href="projects.html" class="active">Projects</a>
   <a href="contact.html">Contact</a>
 </nav>
 
-<h1>👋 About Me</h1>
+<h1>💻 My Projects</h1>
 
-<p>I’m a beginner web developer learning HTML, CSS, and JavaScript.</p>
-
-<button class="btn" onclick="toggleMore()">Read more</button>
-
-<div id="more" class="card fade">
-  <p>I enjoy making small projects to improve my coding skills and design sense.  
-  This mini-portfolio demonstrates the use of internal CSS, JavaScript, and responsive layouts — all in a clean, minimal style.</p>
+<div class="filter-buttons">
+  <button class="btn active" onclick="filter('all', this)">All</button>
+  <button class="btn" onclick="filter('web', this)">Web</button>
+  <button class="btn" onclick="filter('design', this)">Design</button>
 </div>
 
+<div id="list">
+  <div class="project fade" data-cat="web"><b>Portfolio Site</b> — HTML & CSS</div>
+  <div class="project fade" data-cat="web"><b>Todo App</b> — HTML, CSS, JS</div>
+  <div class="project fade" data-cat="design"><b>Landing Page</b> — UI Design</div>
+</div>
+
+
+
 <script>
-function toggleMore() {
-  const more = document.getElementById("more");
-  if (more.style.display === "none" || more.style.display === "") {
-    more.style.display = "block";
-    more.classList.add('fade');
-  } else {
-    more.style.display = "none";
-  }
+function filter(category, button){
+  // Update active button
+  document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+
+  const items = document.querySelectorAll('.project');
+  items.forEach(p=>{
+    if(category==='all' || p.dataset.cat===category){
+      p.style.display='block';
+      p.classList.add('fade');
+    } else {
+      p.style.display='none';
+    }
+  });
 }
 </script>
 
